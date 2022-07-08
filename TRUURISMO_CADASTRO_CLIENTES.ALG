@@ -1,0 +1,184 @@
+Algoritmo "Truurismo_cadastro_clientes"
+
+
+var
+
+   nomes: vetor[0..4] de caractere
+   destino: vetor[0..4] de caractere
+   op, nome: caractere
+   i, j, s: inteiro
+
+
+procedimento inicializa()
+
+inicio
+
+   enquanto op <> "3" faca
+
+      escreval("----------- TRUURISMO - CADASTRO -----------")
+      escreval()
+      escreval("------------------- MENU -------------------")
+      escreval("------- Escolha uma das opções abaixo ------")
+      escreval()
+      escreval("(1) Cadastrar cliente")
+      escreval("(2) Buscar cliente")
+      escreval("(3) Sair")
+      escreval()
+
+      escreva("Opção: ")
+      leia(op)
+
+      se op="1" entao
+         limpatela
+
+         se s=10 entao
+
+            escreval(" -> !Não há mais vagas! <-")
+
+         senao
+
+            cadastrar_cliente()
+         fimse
+      fimse
+
+
+      se op="2" entao
+         limpatela
+
+         buscar_cliente()
+      fimse
+
+
+
+      se op="3" entao
+
+         para i de 0 ate 4 faca
+            nomes[i] <- "x"
+         fimpara
+         limpatela
+
+         escreval("-- !A Truurismo agradece a escolha! --")
+
+      fimse
+   fimenquanto
+
+fimprocedimento
+
+procedimento cadastrar_cliente()
+
+inicio
+
+   para i de 0 ate 4 faca
+
+      se (nomes[i]="") entao
+
+         escreval("Digite os dados do cliente e do destino desejado: ")
+         escreval()
+
+         escreva("-> Nome: ")
+         leia(nomes[i])
+
+         escreva("-> Destino: ")
+         leia(destino[i])
+
+         escreval()
+
+         voltar_menu()
+
+         s <- s + 1
+
+         limpatela
+      fimse
+   fimpara
+
+   escreval(" -> !Não há mais vagas! <-")
+   escreval()
+
+fimprocedimento
+
+procedimento voltar_menu()
+
+inicio
+
+   escreva("Voltar para o menu (s/n - letra minúscula)? ")
+   leia(op)
+
+   se op="s" entao
+
+      i <- i + 1
+
+      limpatela
+
+      inicializa()
+   senao
+      limpatela
+
+
+      cadastrar_cliente()
+   fimse
+fimprocedimento
+
+
+procedimento buscar_cliente()
+
+inicio
+
+   j <- 0
+
+   escreval("-> !BUSCA DE CADASTRO...! <-")
+   escreval()
+
+   escreva("Informe o nome do(a) cliente: ")
+   leia(nome)
+   escreval()
+
+   para i de 0 ate 4 faca
+
+      se (nome=nomes[i]) entao
+
+         escreval("-> Nome: ", nomes[i])
+         escreval("-> Destino: ", destino[i])
+         escreval()
+
+         j <- j + 1
+
+      fimse
+   fimpara
+
+   se (j = 0) entao
+
+      escreval("-> !Cliente não cadastrado! <-")
+      escreval()
+
+   fimse
+
+   Voltar_menu2()
+
+   limpatela
+
+fimprocedimento
+
+procedimento voltar_menu2()
+
+inicio
+
+   Escreva("-> ?Deseja voltar para o MENU (s/n - letra minúscula)? <-")
+   leia(op)
+
+
+   se op="s" entao
+      limpatela
+
+      inicializa()
+
+   senao
+      limpatela
+      buscar_cliente()
+   fimse
+fimprocedimento
+
+inicio
+
+   inicializa()
+
+Fimalgoritmo
